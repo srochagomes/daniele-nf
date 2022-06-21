@@ -1,5 +1,22 @@
-version: '3'
+version: "3.9"
 services:
+  db:
+    image: postgres
+    networks:
+      - daniele-net
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=daniele_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5433:5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   react-ui:
     build:
       context: ../nfe-front-service
@@ -10,3 +27,7 @@ services:
     volumes:
        - ./nfe-front-service:/usr/src/app/nfe-front-service
        - /usr/src/app/nfe-front-service/node_modules
+
+networks:
+  daniele-net:
+    driver: bridge

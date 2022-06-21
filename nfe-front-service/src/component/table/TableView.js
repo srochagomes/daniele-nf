@@ -1,56 +1,93 @@
-import React from "react";
+import React, {useState, useEffect} from 'react';
+
 
 function TableView(){
-        const data = [{  
-            name: 'Ayaan',  
-            age: 26  
-            },{  
-            name: 'Ahana',  
-            age: 22  
-            },{  
-            name: 'Peter',  
-            age: 40      
-            },{  
-            name: 'Virat',  
-            age: 30  
-            },{  
-            name: 'Rohit',  
-            age: 32  
-            },{  
-            name: 'Dhoni',  
-            age: 37  
-            }]  
+        const [data, setData] = useState();
+        const [timeIncrease, setTimeIncrease] = useState();
+        
         const columns = [{  
-        Header: 'Name',  
-        accessor: 'name'  
-        },{  
-        Header: 'Age',  
-        accessor: 'age'  
-        }];        
+            Header: 'id'
+          },{  
+            Header: 'Arquivo'
+          },{  
+            Header: 'Numero'
+          },{  
+            Header: 'Nome Emitente'
+          },{  
+            Header: 'Nome Destinatário'
+          },{  
+            Header: 'Data Envio'
+          },{  
+            Header: 'Valor'
+          },{  
+            Header: 'Status'
+          }];        
         
-        
+        const handleNfeList = () => {
+      
+          fetch(
+            'http://localhost:8083/nfes',
+            {
+              method: 'GET',             
+                      mode: 'cors',   
+                      headers: {
+                      'Accept': 'application/json',                               
+                      'Access-Control-Allow-Origin':'*'
+                      }
+            }
+          ).then( (response) => {
+                  if (!response.ok)  
+                      return Promise.reject(new Error(response.status.toString())); //Write your own error msg here
+                  return response.json();
+                      
+                  })
+            .then((result) => {
+              setData(result);
+            })
+            .catch((error) => {
+              setData([]);
+            });
+        };      
 
+        useEffect(()=>{          
+          const intervalId = setInterval(() => {
+            setTimeIncrease(timeIncrease + 1);
+            handleNfeList();
+          }, 10000);
+          return () => clearInterval(intervalId);
+        },[timeIncrease]);
+
+        
 
   return (
     <>
       <table id="notaFiscal">
       <thead>        
             <tr>
-              {columns.map(column => (
-                <th>
+              {columns.map((column,indiceColumn) => (
+                <th key={indiceColumn}>
                   {column['Header']}
                 </th>
               ))}
             </tr>
         
         </thead>
-        {data.map(element => (
-            <tr>
-                <td>{element.name}</td>
-                <td>{element.age}</td>                
+        <tbody>
+        {data && data.map(element => (
+            <tr key={element.id}>
+
+                <td>{element.id}</td>
+                <td>{element.fileNameOriginal}</td>
+                <td>{element.numero}</td>
+                <td>{element.nomeEmitente}</td>
+                <td>{element.nomeDestinatario}</td>
+                <td>{element.dhRegistro}</td>
+                <td>{element.valorNotaFiscal}</td>
+                <td>{element.status}</td>
             </tr>
         ))}
-        
+        </tbody>
+
     </table>
     </>
   );
