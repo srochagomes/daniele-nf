@@ -23,6 +23,27 @@ function TableView(){
             Header: 'Status'
           }];        
         
+          // shorter & readable 
+        
+          const deleteNfe = (item) => {
+            fetch(
+              'http://localhost:8083/nfes/'+item,
+              {
+                method: 'DELETE',             
+                        mode: 'cors',   
+                        headers: {
+                        'Accept': 'application/json',                               
+                        'Access-Control-Allow-Origin':'*'
+                        }
+              }
+            ).then( (response) => {
+                handleNfeList();
+                        
+              });
+            
+          }   
+
+
         const handleNfeList = () => {
       
           fetch(
@@ -69,6 +90,7 @@ function TableView(){
                   {column['Header']}
                 </th>
               ))}
+              <th></th>
             </tr>
         
         </thead>
@@ -84,6 +106,11 @@ function TableView(){
                 <td>{element.dhRegistro}</td>
                 <td>{element.valorNotaFiscal}</td>
                 <td>{element.status}</td>
+                
+                <td><button onClick={() => deleteNfe(element.id)} className="x-button">
+                      X
+                    </button>
+                </td>
             </tr>
         ))}
         </tbody>

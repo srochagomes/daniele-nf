@@ -40,3 +40,20 @@ code {
   margin-left: auto;   
   float: right;
 }
+
+.x-button {
+  background: white;
+  text-align: center;
+  color: #322;
+  border: none;
+  cursor: pointer;
+}
+
+.x-button:hover {
+  color: #1F2937;
+}
+
+.x-button-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

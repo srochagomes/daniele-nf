@@ -79,8 +79,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
-		<!-- Camel Starter -->
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>

@@ -36,6 +36,7 @@ services:
       - POSTGRES_DB=daniele_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      
     ports:
       - 5433:5432
     healthcheck:
@@ -67,15 +68,38 @@ services:
       - POSTGRES_ADDRESS=db
       - POSTGRES_PORT=5432
       - RABBBIT_ADDRESS=rabbitmq
-
+      - PATH_ROOT=data-file/      
+      
     volumes:
-       - ./file-shared:/usr/src/app/
+       - file-shared:/data-file/input
+
     networks:
       - daniele-net
 
+  nf-process:
+    build: 
+      context: ../nfe-process-service
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - RABBBIT_ADDRESS=rabbitmq
+      - RABBBIT_PORT=5672
+      - PATH_ROOT=data-file/
+      
+    volumes:
+       - file-shared:/data-file/input
+
+
+    networks:
+      - daniele-net
 volumes:
     rabbitmq_data:
     rabbitmq_log:
+    file-shared:      
+      name: file-shared-volume-new
     
 networks:
   daniele-net:

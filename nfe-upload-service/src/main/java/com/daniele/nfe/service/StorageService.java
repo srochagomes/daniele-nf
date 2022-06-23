@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.ws.rs.NotFoundException;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -106,6 +107,15 @@ public class StorageService {
                 }
             }
         }
+    }
+
+    @Transactional
+    public void delete(Long id){
+
+        NfeEntity notaEncontrada = repository.findById(id).orElseThrow(NotFoundException::new);
+
+        repository.delete(notaEncontrada);
+
     }
 
 }

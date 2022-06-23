@@ -21,23 +21,15 @@ import java.util.List;
 @Validated
 @AllArgsConstructor
 @RestController
-public class NfeImportResource extends RootController{
+public class NfeConsultaResource extends RootController{
 
     private final StorageService storageService;
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @Operation(description = "Import a NF-e document")
-    @PostMapping(value = "/import" , consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<NotaFiscal> handleFileUpload(@RequestParam("file") MultipartFile file) {
-
-        NotaFiscal data = storageService.store(file);
-
-        final URI uri =
-                MvcUriComponentsBuilder.fromController(getClass())
-                        .path("/{id}")
-                        .buildAndExpand(data.getId())
-                        .toUri();
-        return ResponseEntity.created(uri).header("Access-Control-Allow-Headers","*").body(data);
+    @GetMapping( produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Operation(description = "Search All Nfes")
+    public ResponseEntity<List<NotaFiscal>> getAllNfe( ) {
+        return ResponseEntity.ok(storageService.findAll());
     }
 
 
