@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /data
+.docker/
 /nfe-front-service
 /.pnp
 .pnp.js

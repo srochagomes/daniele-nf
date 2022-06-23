@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<nfe>
+    <id>1</id>
+    <nome>Ana Maria</nome>
+    <email>ana.maria@email.com</email>
+    <Telefones>
+        <Telefone>
+            <id>1</id>
+            <ddd>55</ddd>
+            <numero>21210022</numero>
+        </Telefone>
+        <Telefone>
+            <id>2</id>
+            <ddd>54</ddd>
+            <numero>91910022</numero>
+        </Telefone>
+    </Telefones>
+    <Endereco>
+        <id>1</id>
+        <logradouro>Rua Venancio Aires</logradouro>
+        <bairro>Centro</bairro>
+        <cep>97050-100</cep>
+        <cidade>Santa Maria</cidade>
+        <complemento>Ap.03A</complemento>
+        <numero>654</numero>
+    </Endereco>
+</Contato>

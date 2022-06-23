@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc versao="4.00"
+    xmlns="http://www.portalfiscal.inf.br/nfe">
+    <NFe
+        xmlns="http://www.portalfiscal.inf.br/nfe" >
+        <infNFe versao="4.00" Id="NFe35210100771482000264550010000039081885128856">
+            <ide>
+                <cUF>35</cUF>
+                <cNF>88512885</cNF>
+                <natOp>Venda de merc. adquir. receb. de terceiros /</natOp>
+                <mod>55</mod>
+                <serie>1</serie>
+                <nNF>3908</nNF>
+                <dhEmi>2021-01-28T08:29:04-03:00</dhEmi>
+                <dhSaiEnt>2021-01-28T08:29:04-03:00</dhSaiEnt>
+                <tpNF>1</tpNF>
+                <idDest>1</idDest>
+                <cMunFG>3503307</cMunFG>
+                <tpImp>2</tpImp>
+                <tpEmis>1</tpEmis>
+                <cDV>6</cDV>
+                <tpAmb>1</tpAmb>
+                <finNFe>1</finNFe>
+                <indFinal>1</indFinal>
+                <indPres>0</indPres>
+                <procEmi>3</procEmi>
+                <verProc>ZINNFE 4.00</verProc>
+            </ide>
+            <emit>
+                <CNPJ>00771482000264</CNPJ>
+                <xNome>RIOPET EMBALAGENS S.A</xNome>
+                <enderEmit>
+                    <xLgr>RODOVIA ANHANGUERA KM 167 GALPAO1</xLgr>
+                    <nro>S/N</nro>
+                    <xCpl>BLOCO 1</xCpl>
+                    <xBairro>JARDIM SOBRADINHO</xBairro>
+                    <cMun>3503307</cMun>
+                    <xMun>ARARAS /SP</xMun>
+                    <UF>SP</UF>
+                    <CEP>13602040</CEP>
+                </enderEmit>
+                <IE>182134131119</IE>
+                <CRT>3</CRT>
+            </emit>
+            <dest>
+                <CNPJ>61186888006558</CNPJ>
+                <xNome>SPAL INDUSTRIA BRASILEIRA DE BEBIDA</xNome>
+                <enderDest>
+                    <xLgr>RODOVIA DOM GABRIEL PAULINO BUENO COUTO</xLgr>
+                    <nro>SN</nro>
+                    <xBairro>Jardim Tannus</xBairro>
+                    <cMun>3525904</cMun>
+                    <xMun>JUNDIAI</xMun>
+                    <UF>SP</UF>
+                    <CEP>13212240</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>Brasil</xPais>
+                </enderDest>
+                <indIEDest>1</indIEDest>
+                <IE>407098871115</IE>
+            </dest>
+            <det nItem="1">
+                <prod>
+                    <cProd>ASU001-10</cProd>
+                    <cEAN>SEM GTIN</cEAN>
+                    <xProd>REFPET COCA COLA TRAD. 2L 91G - 847 UN</xProd>
+                    <NCM>39233090</NCM>
+                    <CEST>0000000</CEST>
+                    <CFOP>5102</CFOP>
+                    <uCom>MH</uCom>
+                    <qCom>23.7160</qCom>
+                    <vUnCom>2020.9145724405</vUnCom>
+                    <vProd>47928.01</vProd>
+                    <cEANTrib>SEM GTIN</cEANTrib>
+                    <uTrib>MH</uTrib>
+                    <qTrib>23.7160</qTrib>
+                    <vUnTrib>2020.9145724405</vUnTrib>
+                    <indTot>1</indTot>
+                    <xPed>8300138219</xPed>
+                    <nItemPed>000030</nItemPed>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS00>
+                            <orig>0</orig>
+                            <CST>00</CST>
+                            <modBC>0</modBC>
+                            <vBC>55117.21</vBC>
+                            <pICMS>18.0000</pICMS>
+                            <vICMS>9921.10</vICMS>
+                        </ICMS00>
+                    </ICMS>
+                    <IPI>
+                        <cEnq>999</cEnq>
+                        <IPITrib>
+                            <CST>50</CST>
+                            <vBC>47928.01</vBC>
+                            <pIPI>15.00</pIPI>
+                            <vIPI>7189.20</vIPI>
+                        </IPITrib>
+                    </IPI>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>47928.01</vBC>
+                            <pPIS>1.65</pPIS>
+                            <vPIS>790.81</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>47928.01</vBC>
+                            <pCOFINS>7.60</pCOFINS>
+                            <vCOFINS>3642.53</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>55117.21</vBC>
+                    <vICMS>9921.10</vICMS>
+                    <vICMSDeson>0.00</vICMSDeson>
+                    <vFCP>0.00</vFCP>
+                    <vBCST>0.00</vBCST>
+                    <vST>0.00</vST>
+                    <vFCPST>0</vFCPST>
+                    <vFCPSTRet>0</vFCPSTRet>
+                    <vProd>47928.01</vProd>
+                    <vFrete>0.00</vFrete>
+                    <vSeg>0.00</vSeg>
+                    <vDesc>0.00</vDesc>
+                    <vII>0.00</vII>
+                    <vIPI>7189.20</vIPI>
+                    <vIPIDevol>0.00</vIPIDevol>
+                    <vPIS>790.81</vPIS>
+                    <vCOFINS>3642.53</vCOFINS>
+                    <vOutro>0.00</vOutro>
+                    <vNF>55117.21</vNF>
+                </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>0</modFrete>
+                <transporta>
+                    <CNPJ>18349705000184</CNPJ>
+                    <xNome>RSC TRANSPORTES EIRELI</xNome>
+                    <IE>11095194</IE>
+                    <xEnder>AVN NILO PECANHA 753, LOJA:21</xEnder>
+                    <xMun>NOVA IGUACU</xMun>
+                    <UF>RJ</UF>
+                </transporta>
+                <vol>
+                    <qVol>00028</qVol>
+                    <esp>PALLET</esp>
+                    <pesoL>2158156.000</pesoL>
+                    <pesoB>2158156.000</pesoB>
+                </vol>
+            </transp>
+            <cobr>
+                <fat>
+                    <nFat>000003908</nFat>
+                    <vOrig>55117.21</vOrig>
+                    <vDesc>0.00</vDesc>
+                    <vLiq>55117.21</vLiq>
+                </fat>
+                <dup>
+                    <nDup>001</nDup>
+                    <dVenc>2021-03-29</dVenc>
+                    <vDup>55117.21</vDup>
+                </dup>
+            </cobr>
+            <pag>
+                <detPag>
+                    <tPag>14</tPag>
+                    <vPag>55117.21</vPag>
+                </detPag>
+            </pag>
+            <infAdic>
+                <infCpl>|Numero do Protocolo: - Data Autorizacao: 20210128 082857 Vencto.: 29.03.2021 - Vlr.: 55.117,21|PLACA DAH7392 LUCAS</infCpl>
+            </infAdic>
+        </infNFe>
+        <Signature
+            xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                <Reference URI="#NFe35210100771482000264550010000039081885128856">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    <DigestValue>BnwuqsrJzeEpbl/4LfdPHQbWOwk=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>Vp2cpwpx3WXnA73mhOJaQ2klMFepOZaEPWqD2Fvk6SpidfzMCsbPC3hyWcbM1Frpwi1829MkilYXgxw3yEVagtwhBnpa5o4++S/mfGYhqe602KfVCTea4b/YmAV7uzRNapDx6snAIUZB9dzC2oaBERHmm6w8U711nLTyfMoKPY3kaYb3VZ2kr1E/WK47vs0HQuQZ70qpCSUwCci3OapCRLq+eWI2NMxp5ASfEiyR0f5Dzk42nZsTWceFM6MQuxxjF+EWMf2aVmWZNsRxhly0v3vZyC4t5RWKTiEAtPPGhWf8l0808jIuVcfyFai5F0Ck7FMW5TJ1hfIuGvx8yWEDqA==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>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</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+    <protNFe
+        xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+        <infProt>
+            <tpAmb>1</tpAmb>
+            <verAplic>SP_NFE_PL009_V4</verAplic>
+            <chNFe>35210100771482000264550010000039081885128856</chNFe>
+            <dhRecbto>2021-01-28T08:29:20-03:00</dhRecbto>
+            <nProt>135210098612802</nProt>
+            <digVal>BnwuqsrJzeEpbl/4LfdPHQbWOwk=</digVal>
+            <cStat>100</cStat>
+            <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+    </protNFe>
+</nfeProc>

@@ -1,0 +1,29 @@
+package com.daniele.nfe.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Imposto {
+
+    private BigDecimal vTotTrib;
+
+    @JsonProperty(value = "ICMS")
+    private  Icms icms;
+
+    @JsonProperty(value = "IPI")
+    private  Ipi ipi;
+
+    @JsonProperty(value = "PIS")
+    private  Pis pis;
+
+    @JsonProperty(value = "COFINS")
+    private  Cofins cofins;
+
+}
