@@ -1,6 +1,6 @@
 package com.daniele.nfe.controller;
 
-import com.daniele.nfe.domain.Nfe;
+import com.daniele.nfe.domain.NotaFiscal;
 import com.daniele.nfe.service.StorageService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -28,9 +28,9 @@ public class NfeImportResource extends RootController{
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(description = "Import a NF-e document")
     @PostMapping(value = "/import" , consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Nfe> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<NotaFiscal> handleFileUpload(@RequestParam("file") MultipartFile file) {
 
-        Nfe data = storageService.store(file);
+        NotaFiscal data = storageService.store(file);
 
         final URI uri =
                 MvcUriComponentsBuilder.fromController(getClass())
@@ -43,7 +43,7 @@ public class NfeImportResource extends RootController{
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping( produces = {MediaType.APPLICATION_JSON_VALUE})
     @Operation(description = "Search All Nfes")
-    public ResponseEntity<List<Nfe>> getAllNfe( ) {
+    public ResponseEntity<List<NotaFiscal>> getAllNfe( ) {
         return ResponseEntity.ok(storageService.findAll());
     }
 

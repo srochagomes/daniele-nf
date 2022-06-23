@@ -1,11 +1,11 @@
 package com.daniele.nfe.parsers;
 
-import com.daniele.nfe.domain.Nfe;
+import com.daniele.nfe.domain.NotaFiscal;
 import com.daniele.nfe.infrastructure.entity.NfeEntity;
 import lombok.Getter;
 
 @Getter
-public class NfeParser<DOMAIN extends Nfe, ENTITY extends NfeEntity> {
+public class NfeParser<DOMAIN extends NotaFiscal, ENTITY extends NfeEntity> {
     private DOMAIN domain;
     private ENTITY entity;
 
@@ -19,14 +19,14 @@ public class NfeParser<DOMAIN extends Nfe, ENTITY extends NfeEntity> {
         this.domain = this.transformTo(pEntity, full);
     }
 
-    public static NfeEntity parser(Nfe pDomain){
+    public static NfeEntity parser(NotaFiscal pDomain){
         return new NfeParser(pDomain).getEntity();
     }
-    public static Nfe parser(NfeEntity pEntity){
+    public static NotaFiscal parser(NfeEntity pEntity){
         return new NfeParser(pEntity,true).getDomain();
     }
 
-    public static Nfe parserShort(NfeEntity pEntity){
+    public static NotaFiscal parserShort(NfeEntity pEntity){
         return new NfeParser(pEntity,false).getDomain();
     }
 
@@ -46,7 +46,7 @@ public class NfeParser<DOMAIN extends Nfe, ENTITY extends NfeEntity> {
 
 
     private DOMAIN transformTo(ENTITY parameter, boolean full) {
-        return  (DOMAIN)Nfe
+        return  (DOMAIN) NotaFiscal
                 .builder()
                 .id(parameter.getId())
                 .fileNameOriginal(parameter.getFileNameOriginal())

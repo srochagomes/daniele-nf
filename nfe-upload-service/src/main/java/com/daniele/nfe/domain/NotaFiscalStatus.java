@@ -1,6 +1,6 @@
 package com.daniele.nfe.domain;
 
-public enum NfeStatus {
+public enum NotaFiscalStatus {
     AGUARDANDO_PROCESSAMENTO,
     EM_PROCESSAMENTO,
     PROCESSADA,

@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 public class Emitente {
     @JsonProperty(value = "CNPJ")
     private BigDecimal cnpj;
+    @JsonProperty(value = "xNome")
     private  String xNome;
     private  String xFant;
 

@@ -2,6 +2,7 @@ package com.daniele.nfe.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -24,6 +25,7 @@ public class IcmsTot {
     private  BigDecimal  vPIS;
     private  BigDecimal  vCOFINS;
     private  BigDecimal  vOutro;
+    @JsonProperty(value = "vNF")
     private  BigDecimal  vNF;
     private  BigDecimal  vTotTrib;
 }

@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Builder
 @Data
@@ -17,23 +17,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Nfe {
+public class NotaFiscalDuplicata {
 
     private Long id;
 
-    private String fileNameOriginal;
+    private Integer numero;
 
-    private Long numero;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "Brazil/East")
+    private LocalDate dtVencto;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "pt-BR", timezone = "Brazil/East")
-    private LocalDateTime dhRegistro;
-
-    private String nomeEmitente;
-
-    private String nomeDestinatario;
-
-    private BigDecimal valorNotaFiscal;
-
-    private NfeStatus status;
+    private BigDecimal valor;
 
 }

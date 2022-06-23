@@ -5,6 +5,7 @@
 /data
 .docker/
 /nfe-front-service
+/file-shared
 /.pnp
 .pnp.js
 

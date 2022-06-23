@@ -15,6 +15,7 @@ public class Destinatario {
     @JsonProperty(value = "CNPJ")
     private BigDecimal cnpj;
 
+    @JsonProperty(value = "xNome")
     private  String xNome;
 
     @JsonProperty(value = "enderDest")

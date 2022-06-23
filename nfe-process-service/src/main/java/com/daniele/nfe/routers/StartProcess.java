@@ -23,6 +23,7 @@ public class StartProcess extends RouteBuilder {
                     .log("enviou ${body}")
                 .doCatch(Throwable.class).onWhen(exceptionMessage().isNotNull())
                     .process(new NFeFailProcessor())
+                    .log("falha ${body}")
                     .log(exceptionMessage().toString())
                     .to("{{route.to.message.fail}}")
                     .throwException(new RuntimeException("Problema ao ler arquivo"))

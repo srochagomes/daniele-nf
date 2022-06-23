@@ -1,20 +1,25 @@
 package com.daniele.nfe.service;
 
-import com.daniele.nfe.domain.Nfe;
-import com.daniele.nfe.domain.NfeStatus;
+import com.daniele.nfe.domain.NotaFiscal;
+import com.daniele.nfe.domain.NotaFiscalDuplicata;
+import com.daniele.nfe.domain.NotaFiscalStatus;
+import com.daniele.nfe.infrastructure.entity.NfeDuplicataEntity;
 import com.daniele.nfe.infrastructure.entity.NfeEntity;
 import com.daniele.nfe.infrastructure.repossitory.NfeRepository;
 import com.daniele.nfe.parsers.NfeParser;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +32,7 @@ public class StorageService {
     @Value(value = "${path.input}")
     private String pathInput;
 
-    public Nfe store(MultipartFile file) {
+    public NotaFiscal store(MultipartFile file) {
         if (!file.isEmpty()) {
             var directoryInput = new File(this.pathInput);
 
@@ -37,7 +42,7 @@ public class StorageService {
             String orgName = file.getOriginalFilename();
 
             NfeEntity nfe = NfeEntity.builder()
-                    .status(NfeStatus.AGUARDANDO_PROCESSAMENTO)
+                    .status(NotaFiscalStatus.AGUARDANDO_PROCESSAMENTO)
                     .dhRegistro(LocalDateTime.now())
                     .fileNameOriginal(orgName)
                     .build();
@@ -53,11 +58,54 @@ public class StorageService {
             }
 
         }
-        return Nfe.builder().id(1l).build();
+        return NotaFiscal.builder().id(1l).build();
     }
 
-    public List<Nfe> findAll() {
+    public List<NotaFiscal> findAll() {
         return repository.findAllByOrderByDhRegistroDesc()
                 .stream().map(NfeParser::parser).collect(Collectors.toList());
     }
+
+    @Transactional
+    public void fileUploadFail(NotaFiscal notaFiscal){
+        if (ObjectUtils.allNotNull(notaFiscal,notaFiscal.getId())){
+            Optional<NfeEntity> notaEncontrada = repository.findById(notaFiscal.getId());
+            if (notaEncontrada.isPresent()){
+                notaEncontrada.get().setStatus(NotaFiscalStatus.PROCESSADA_COM_ERRO);
+            }
+        }
+    }
+
+    @Transactional
+    public void fileUploadSuccess(NotaFiscal notaFiscal){
+        if (ObjectUtils.allNotNull(notaFiscal,notaFiscal.getId())){
+            Optional<NfeEntity> notaEncontrada = repository.findById(notaFiscal.getId());
+            if (notaEncontrada.isPresent()){
+                NfeEntity nfe = notaEncontrada.get();
+                nfe.setStatus(NotaFiscalStatus.PROCESSADA);
+                nfe.setDhRegistro(notaFiscal.getDhRegistro());
+                nfe.setNomeDestinatario(notaFiscal.getNomeDestinatario());
+                nfe.setNomeEmitente(notaFiscal.getNomeEmitente());
+                nfe.setNumero(notaFiscal.getNumero());
+                nfe.setValorNotaFiscal(notaFiscal.getValorNotaFiscal());
+
+                if (ObjectUtils.allNotNull(notaFiscal.getDuplicata())){
+                    NotaFiscalDuplicata duplicata = notaFiscal.getDuplicata();
+                    NfeDuplicataEntity nfeDuplicata =
+                        Optional.ofNullable(nfe.getDuplicata()).orElseGet(()->NfeDuplicataEntity
+                                .builder()
+                                .id(nfe.getId()).build());
+
+
+
+                    nfeDuplicata.setDtVencto(duplicata.getDtVencto());
+                    nfeDuplicata.setNumero(duplicata.getNumero());
+                    nfeDuplicata.setValor(duplicata.getValor());
+                    nfeDuplicata.setNfe(nfe);
+                    nfe.setDuplicata(nfeDuplicata);
+                }
+            }
+        }
+    }
+
 }
